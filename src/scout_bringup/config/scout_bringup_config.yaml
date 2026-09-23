@@ -1,0 +1,27 @@
+# 所有启动文件共用的总配置。
+# 修改后重新 source ~/.bashrc 即可使用；也可以在命令行覆盖 launch 参数。
+
+common:
+  use_sim_time: false
+  rviz: true
+
+mapping:
+  resolution: 0.05
+  publish_period_sec: 1.0
+
+navigation:
+  map: ld19_handheld_map.yaml
+  # laser：MOLA 激光里程计；vehicle：车辆底盘提供 odom -> base_link
+  odom_source: laser
+
+scout_can:
+  interface_name: can0
+  send_control: true
+  publish_odom: false
+  log_frames: true
+  send_period_ms: 20
+  control_vx_mm_s: 0
+  control_wz_mrad_s: 0
+  control_vy_mm_s: 0
+  odom_frame: odom
+  base_frame: base_link

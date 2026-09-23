@@ -1,0 +1,62 @@
+[0.022s] Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/yly/ld19_hand_on/src/scout_can -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yly/ld19_hand_on/install/scout_can
+[0.868s] -- The C compiler identification is GNU 13.3.0
+[1.530s] -- The CXX compiler identification is GNU 13.3.0
+[1.608s] -- Detecting C compiler ABI info
+[2.016s] -- Detecting C compiler ABI info - done
+[2.039s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.041s] -- Detecting C compile features
+[2.042s] -- Detecting C compile features - done
+[2.077s] -- Detecting CXX compiler ABI info
+[2.500s] -- Detecting CXX compiler ABI info - done
+[2.523s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.523s] -- Detecting CXX compile features
+[2.524s] -- Detecting CXX compile features - done
+[2.555s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[3.138s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[3.486s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[3.664s] -- Found geometry_msgs: 5.3.8 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[3.906s] -- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[3.969s] -- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[4.038s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.124s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.328s] -- Found nav_msgs: 5.3.8 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[4.459s] -- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+[4.642s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[4.659s] -- Found rmw_fastrtps_cpp: 8.4.4 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[5.054s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[5.136s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[5.205s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[5.571s] -- Found tf2: 0.36.22 (/opt/ros/jazzy/share/tf2/cmake)
+[5.590s] -- Found tf2_geometry_msgs: 0.36.22 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[5.667s] -- Found eigen3_cmake_module: 0.3.1 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[5.674s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[5.674s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[6.898s] -- Configuring done (6.7s)
+[6.958s] -- Generating done (0.0s)
+[6.976s] -- Build files have been written to: /home/yly/ld19_hand_on/build/scout_can
+[7.053s] Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/yly/ld19_hand_on/src/scout_can -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yly/ld19_hand_on/install/scout_can
+[7.056s] Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[7.305s] [ 50%] Building CXX object CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o
+[30.278s] [100%] Linking CXX executable scout_can_node
+[32.309s] [100%] Built target scout_can_node
+[32.383s] Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[32.384s] Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can
+[32.423s] -- Install configuration: ""
+[32.423s] -- Execute custom install script
+[32.423s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/lib/scout_can/scout_can_node
+[32.465s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/package_run_dependencies/scout_can
+[32.503s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/parent_prefix_path/scout_can
+[32.552s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/ament_prefix_path.sh
+[32.592s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/ament_prefix_path.dsv
+[32.629s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/path.sh
+[32.664s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/path.dsv
+[32.708s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.bash
+[32.739s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.sh
+[32.791s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.zsh
+[32.848s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.dsv
+[32.893s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.dsv
+[32.926s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/packages/scout_can
+[32.967s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/cmake/scout_canConfig.cmake
+[33.001s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/cmake/scout_canConfig-version.cmake
+[33.040s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.xml
+[33.090s] Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can

@@ -1,0 +1,45 @@
+[0.022s] Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[0.090s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.670s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.689s] -- Found geometry_msgs: 5.3.8 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[0.740s] -- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.762s] -- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.780s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.811s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.908s] -- Found nav_msgs: 5.3.8 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[0.980s] -- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+[1.045s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.046s] -- Found rmw_fastrtps_cpp: 8.4.4 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.206s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.369s] -- Found tf2: 0.36.22 (/opt/ros/jazzy/share/tf2/cmake)
+[1.382s] -- Found tf2_geometry_msgs: 0.36.22 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[1.392s] -- Found eigen3_cmake_module: 0.3.1 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[1.394s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.939s] -- Configuring done (1.9s)
+[1.989s] -- Generating done (0.0s)
+[2.007s] -- Build files have been written to: /home/yly/ld19_hand_on/build/scout_can
+[2.165s] [ 50%] Building CXX object CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o
+[17.323s] [100%] Linking CXX executable scout_can_node
+[18.395s] [100%] Built target scout_can_node
+[18.427s] Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[18.460s] Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can
+[18.489s] -- Install configuration: ""
+[18.490s] -- Execute custom install script
+[18.490s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/lib/scout_can/scout_can_node
+[18.491s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/include/scout_can/scout_can_node.hpp
+[18.517s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/package_run_dependencies/scout_can
+[18.518s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/parent_prefix_path/scout_can
+[18.518s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/ament_prefix_path.sh
+[18.519s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/ament_prefix_path.dsv
+[18.520s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/path.sh
+[18.521s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/environment/path.dsv
+[18.521s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.bash
+[18.522s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.sh
+[18.522s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.zsh
+[18.523s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/local_setup.dsv
+[18.523s] -- Symlinking: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.dsv
+[18.551s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/ament_index/resource_index/packages/scout_can
+[18.552s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/cmake/scout_canConfig.cmake
+[18.552s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/cmake/scout_canConfig-version.cmake
+[18.552s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.xml
+[18.558s] Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can

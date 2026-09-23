@@ -1,0 +1,25 @@
+[0.026s] Invoking command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/ldlidar_stl_ros2 -- -j4 -l4
+[0.219s] [ 12%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/src/demo.cpp.o
+[12.667s] [ 25%] Linking CXX executable ldlidar_stl_ros2_node
+[13.547s] [100%] Built target ldlidar_stl_ros2_node
+[13.585s] Invoked command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/ldlidar_stl_ros2 -- -j4 -l4
+[13.618s] Invoking command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/ldlidar_stl_ros2
+[13.646s] -- Install configuration: ""
+[13.646s] -- Execute custom install script
+[13.647s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/lib/ldlidar_stl_ros2/ldlidar_stl_ros2_node
+[13.647s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/package_run_dependencies/ldlidar_stl_ros2
+[13.647s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/parent_prefix_path/ldlidar_stl_ros2
+[13.648s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.sh
+[13.648s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.dsv
+[13.648s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.sh
+[13.648s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.dsv
+[13.648s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.bash
+[13.649s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.sh
+[13.649s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.zsh
+[13.649s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.dsv
+[13.649s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.dsv
+[13.684s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/packages/ldlidar_stl_ros2
+[13.684s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config.cmake
+[13.684s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config-version.cmake
+[13.684s] -- Up-to-date symlink: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.xml
+[13.689s] Invoked command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/ldlidar_stl_ros2

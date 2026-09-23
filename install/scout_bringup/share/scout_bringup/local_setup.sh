@@ -1,0 +1,1 @@
+/home/yly/ld19_hand_on/build/scout_bringup/ament_cmake_environment_hooks/local_setup.sh

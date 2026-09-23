@@ -1,0 +1,176 @@
+[0.294s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-select', 'scout_can']
+[0.295s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['scout_can'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffff86b86e40>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff86d3bd70>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff86d3bd70>>)
+[0.415s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.416s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.416s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.416s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.416s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.416s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.416s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/yly/ld19_hand_on'
+[0.417s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.417s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.417s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.417s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.418s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.418s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.418s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.418s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.418s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['ignore', 'ignore_ament_install']
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'ignore'
+[0.509s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'ignore_ament_install'
+[0.510s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['colcon_pkg']
+[0.510s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'colcon_pkg'
+[0.510s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['colcon_meta']
+[0.511s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'colcon_meta'
+[0.511s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['ros']
+[0.512s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'ros'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['cmake', 'python']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'cmake'
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'python'
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extensions ['python_setup_py']
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(maps) by extension 'python_setup_py'
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ignore'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ignore_ament_install'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['colcon_pkg']
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'colcon_pkg'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['colcon_meta']
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'colcon_meta'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['ros']
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ros'
+[0.525s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ldlidar_stl_ros2' with type 'ros.ament_cmake' and name 'ldlidar_stl_ros2'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extension 'ignore'
+[0.525s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extension 'ignore_ament_install'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extensions ['colcon_pkg']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extension 'colcon_pkg'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extensions ['colcon_meta']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extension 'colcon_meta'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extensions ['ros']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_bringup) by extension 'ros'
+[0.528s] DEBUG:colcon.colcon_core.package_identification:Package 'src/scout_bringup' with type 'ros.ament_cmake' and name 'scout_bringup'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extensions ['ignore', 'ignore_ament_install']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extension 'ignore'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extension 'ignore_ament_install'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extensions ['colcon_pkg']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extension 'colcon_pkg'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extensions ['colcon_meta']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extension 'colcon_meta'
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extensions ['ros']
+[0.528s] Level 1:colcon.colcon_core.package_identification:_identify(src/scout_can) by extension 'ros'
+[0.530s] DEBUG:colcon.colcon_core.package_identification:Package 'src/scout_can' with type 'ros.ament_cmake' and name 'scout_can'
+[0.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.530s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.586s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'ldlidar_stl_ros2' in 'src/ldlidar_stl_ros2'
+[0.586s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'scout_bringup' in 'src/scout_bringup'
+[0.588s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.588s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.594s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 395 installed packages in /opt/ros/jazzy
+[0.600s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.733s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_args' from command line to 'None'
+[0.733s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_target' from command line to 'None'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_clean_cache' from command line to 'False'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_clean_first' from command line to 'False'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'cmake_force_configure' from command line to 'False'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'ament_cmake_args' from command line to 'None'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'catkin_cmake_args' from command line to 'None'
+[0.734s] Level 5:colcon.colcon_core.verb:set package 'scout_can' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.734s] DEBUG:colcon.colcon_core.verb:Building package 'scout_can' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/yly/ld19_hand_on/build/scout_can', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/yly/ld19_hand_on/install/scout_can', 'merge_install': False, 'path': '/home/yly/ld19_hand_on/src/scout_can', 'symlink_install': True, 'test_result_base': None}
+[0.734s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.740s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.742s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/yly/ld19_hand_on/src/scout_can' with build type 'ament_cmake'
+[0.742s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/yly/ld19_hand_on/src/scout_can'
+[0.752s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.753s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.754s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.774s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[20.930s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/scout_can -- -j4 -l4
+[20.966s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/yly/ld19_hand_on/build/scout_can': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can
+[21.048s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(scout_can)
+[21.050s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/yly/ld19_hand_on/build/scout_can' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/scout_can
+[21.053s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can' for CMake module files
+[21.054s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can' for CMake config files
+[21.055s] Level 1:colcon.colcon_core.shell:create_environment_hook('scout_can', 'cmake_prefix_path')
+[21.055s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.ps1'
+[21.056s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.dsv'
+[21.057s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.sh'
+[21.059s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib'
+[21.059s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/bin'
+[21.060s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib/pkgconfig/scout_can.pc'
+[21.060s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib/python3.12/site-packages'
+[21.060s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/bin'
+[21.061s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.ps1'
+[21.063s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.dsv'
+[21.063s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.sh'
+[21.064s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.bash'
+[21.067s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.zsh'
+[21.072s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yly/ld19_hand_on/install/scout_can/share/colcon-core/packages/scout_can)
+[21.074s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(scout_can)
+[21.075s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can' for CMake module files
+[21.076s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can' for CMake config files
+[21.077s] Level 1:colcon.colcon_core.shell:create_environment_hook('scout_can', 'cmake_prefix_path')
+[21.079s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.ps1'
+[21.081s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.dsv'
+[21.083s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/hook/cmake_prefix_path.sh'
+[21.084s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib'
+[21.084s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/bin'
+[21.084s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib/pkgconfig/scout_can.pc'
+[21.085s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/lib/python3.12/site-packages'
+[21.085s] Level 1:colcon.colcon_core.environment:checking '/home/yly/ld19_hand_on/install/scout_can/bin'
+[21.086s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.ps1'
+[21.087s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.dsv'
+[21.088s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.sh'
+[21.089s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.bash'
+[21.090s] INFO:colcon.colcon_core.shell:Creating package script '/home/yly/ld19_hand_on/install/scout_can/share/scout_can/package.zsh'
+[21.091s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/yly/ld19_hand_on/install/scout_can/share/colcon-core/packages/scout_can)
+[21.092s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[21.093s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[21.093s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[21.093s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[21.110s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[21.110s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[21.110s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[21.154s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[21.158s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yly/ld19_hand_on/install/local_setup.ps1'
+[21.162s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yly/ld19_hand_on/install/_local_setup_util_ps1.py'
+[21.166s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yly/ld19_hand_on/install/setup.ps1'
+[21.171s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yly/ld19_hand_on/install/local_setup.sh'
+[21.172s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/yly/ld19_hand_on/install/_local_setup_util_sh.py'
+[21.174s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yly/ld19_hand_on/install/setup.sh'
+[21.176s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yly/ld19_hand_on/install/local_setup.bash'
+[21.176s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yly/ld19_hand_on/install/setup.bash'
+[21.178s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/yly/ld19_hand_on/install/local_setup.zsh'
+[21.179s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/yly/ld19_hand_on/install/setup.zsh'

@@ -1,0 +1,27 @@
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/config/ld19_hand_on.lua
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/config/nav2_params.yaml
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/launch/__pycache__/ld19_hand_on.launch.cpython-312.pyc
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/launch/__pycache__/ld19_navigation.launch.cpython-312.pyc
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/launch/ld19_hand_on.launch.py
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/launch/ld19_navigation.launch.py
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/maps/ld19_map.pgm
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/maps/ld19_map.yaml
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/rviz/ld19_hand_on.rviz
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/lib/ld19_hand_on/save_map
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/package_run_dependencies/ld19_hand_on
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/parent_prefix_path/ld19_hand_on
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/path.sh
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/path.dsv
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.bash
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.sh
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.zsh
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.dsv
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/package.dsv
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/packages/ld19_hand_on
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/cmake/ld19_hand_onConfig.cmake
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/cmake/ld19_hand_onConfig-version.cmake
+-- Up-to-date symlink: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/package.xml

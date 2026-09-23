@@ -1,0 +1,25 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Configuring done (1.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/yly/ld19_hand_on/build/ld19_hand_on
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/config/ld19_hand_on.lua
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/launch/ld19_hand_on.launch.py
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/rviz/ld19_hand_on.rviz
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/package_run_dependencies/ld19_hand_on
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/parent_prefix_path/ld19_hand_on
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/ament_prefix_path.sh
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/ament_prefix_path.dsv
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/path.sh
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/environment/path.dsv
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.bash
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.sh
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.zsh
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/local_setup.dsv
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/package.dsv
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ament_index/resource_index/packages/ld19_hand_on
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/cmake/ld19_hand_onConfig.cmake
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/cmake/ld19_hand_onConfig-version.cmake
+-- Symlinking: /home/yly/ld19_hand_on/install/ld19_hand_on/share/ld19_hand_on/package.xml

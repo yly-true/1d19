@@ -1,0 +1,73 @@
+[0.033s] Invoking command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/yly/ld19_hand_on/src/ldlidar_stl_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yly/ld19_hand_on/install/ldlidar_stl_ros2
+[0.274s] -- The C compiler identification is GNU 13.3.0
+[0.521s] -- The CXX compiler identification is GNU 13.3.0
+[0.626s] -- Detecting C compiler ABI info
+[0.986s] -- Detecting C compiler ABI info - done
+[1.008s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.008s] -- Detecting C compile features
+[1.008s] -- Detecting C compile features - done
+[1.043s] -- Detecting CXX compiler ABI info
+[1.390s] -- Detecting CXX compiler ABI info - done
+[1.423s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.424s] -- Detecting CXX compile features
+[1.436s] -- Detecting CXX compile features - done
+[1.450s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.939s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.205s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.337s] -- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+[2.468s] -- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[2.517s] -- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.570s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.622s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.871s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[2.881s] -- Found rmw_fastrtps_cpp: 8.4.4 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.160s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[3.225s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[3.289s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.525s] -- Found sensor_msgs: 5.3.8 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[3.707s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[4.229s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.238s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.242s] -- Configured cppcheck include dirs: /home/yly/ld19_hand_on/src/ldlidar_stl_ros2/include;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/core;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/dataprocess;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/filter;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/logger;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/networkcom;/home/yly/ld19_hand_on/src/ldlidar_stl_ros2/ldlidar_driver/include/serialcom
+[4.242s] -- Configured cppcheck exclude dirs and/or files: 
+[4.248s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.248s] -- Configured cpplint exclude dirs and/or files: 
+[4.254s] -- Added test 'lint_cmake' to check CMake code style
+[4.259s] -- Added test 'uncrustify' to check C / C++ code style
+[4.259s] -- Configured uncrustify additional arguments: 
+[4.262s] -- Added test 'xmllint' to check XML markup files
+[4.266s] -- Configuring done (4.2s)
+[4.300s] -- Generating done (0.0s)
+[4.308s] -- Build files have been written to: /home/yly/ld19_hand_on/build/ldlidar_stl_ros2
+[4.358s] Invoked command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/yly/ld19_hand_on/src/ldlidar_stl_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yly/ld19_hand_on/install/ldlidar_stl_ros2
+[4.360s] Invoking command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/ldlidar_stl_ros2 -- -j4 -l4
+[4.576s] [ 25%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/dataprocess/lipkg.cpp.o
+[4.577s] [ 25%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/core/ldlidar_driver.cpp.o
+[4.579s] [ 37%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/filter/tofbf.cpp.o
+[4.617s] [ 50%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/src/ld19_scan_node.cpp.o
+[8.135s] [ 62%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/logger/log_module.cpp.o
+[8.216s] [ 75%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/networkcom/network_socket_interface_linux.cpp.o
+[9.104s] [ 87%] Building CXX object CMakeFiles/ldlidar_stl_ros2_node.dir/ldlidar_driver/src/serialcom/serial_interface_linux.cpp.o
+[24.310s] [100%] Linking CXX executable ldlidar_stl_ros2_node
+[25.457s] [100%] Built target ldlidar_stl_ros2_node
+[25.521s] Invoked command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/yly/ld19_hand_on/build/ldlidar_stl_ros2 -- -j4 -l4
+[25.524s] Invoking command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/ldlidar_stl_ros2
+[25.560s] -- Install configuration: ""
+[25.563s] -- Execute custom install script
+[25.563s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/lib/ldlidar_stl_ros2/ldlidar_stl_ros2_node
+[25.591s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/package_run_dependencies/ldlidar_stl_ros2
+[25.633s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/parent_prefix_path/ldlidar_stl_ros2
+[25.668s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.sh
+[25.709s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/ament_prefix_path.dsv
+[25.758s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.sh
+[25.784s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/environment/path.dsv
+[25.830s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.bash
+[25.862s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.sh
+[25.925s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.zsh
+[25.969s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/local_setup.dsv
+[26.010s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.dsv
+[26.049s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ament_index/resource_index/packages/ldlidar_stl_ros2
+[26.088s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config.cmake
+[26.123s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/cmake/ldlidar_stl_ros2Config-version.cmake
+[26.151s] -- Symlinking: /home/yly/ld19_hand_on/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.xml
+[26.196s] Invoked command in '/home/yly/ld19_hand_on/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/yly/ld19_hand_on/build/ldlidar_stl_ros2

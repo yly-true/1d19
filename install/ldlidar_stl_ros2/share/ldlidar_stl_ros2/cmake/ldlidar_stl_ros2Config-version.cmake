@@ -1,0 +1,1 @@
+/home/yly/ld19_hand_on/build/ldlidar_stl_ros2/ament_cmake_core/ldlidar_stl_ros2Config-version.cmake

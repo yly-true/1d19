@@ -1,0 +1,1 @@
+/home/yly/ld19_hand_on/build/scout_can/ament_cmake_core/scout_canConfig-version.cmake
