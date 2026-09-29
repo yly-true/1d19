@@ -21,11 +21,22 @@ def generate_launch_description():
 
     common_config = config['common']
     mapping_config = config['mapping']
+    can_parameters = dict(config['scout_can'])
 
     use_sim_time = LaunchConfiguration('use_sim_time')
     rviz = LaunchConfiguration('rviz')
     resolution = LaunchConfiguration('resolution')
     publish_period_sec = LaunchConfiguration('publish_period_sec')
+
+    # 车辆 CAN 节点：接收 0x221 发布 /odom，并把 /cmd_vel 转成 0x111。
+    can_parameters['send_control'] = True
+    can_parameters['use_cmd_vel'] = True
+    can_parameters['receive_system_state'] = False
+    can_parameters['receive_motion_feedback'] = True
+    can_parameters['receive_wheel_odometry'] = False
+    can_parameters['publish_odom'] = True
+    can_parameters['log_frames'] = False
+    can_parameters['use_sim_time'] = use_sim_time
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -52,7 +63,7 @@ def generate_launch_description():
             output='screen',
         ),
 
-        # 手持设备没有轮速里程计，用一个固定安装关系连接机器人基座和雷达。
+        # 固定安装关系：车辆基座 -> LD19。
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
@@ -65,7 +76,15 @@ def generate_launch_description():
             output='screen',
         ),
 
-        # 纯激光 Cartographer：不使用 IMU 和轮速里程计。
+        Node(
+            package='scout_can',
+            executable='scout_can_node',
+            name='scout_can_mapping',
+            output='screen',
+            parameters=[can_parameters],
+        ),
+
+        # 使用 LD19 激光建图，同时使用车辆 /odom 提供运动先验。
         Node(
             package='cartographer_ros',
             executable='cartographer_node',

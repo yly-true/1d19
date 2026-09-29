@@ -1,4 +1,4 @@
-# LD19 手持建图、Nav2 定位与 Scout Mini CAN
+# LD19 车辆建图、Nav2 定位与 Scout Mini CAN
 
 这是一个 ROS 2 Jazzy 工作空间，目录为：
 
@@ -97,6 +97,7 @@ scout_can_system_status
 scout_can_motion_feedback
 scout_can_wheel_odometry
 scout_can_odometry_rviz
+scout_teleop
 ```
 
 ## 三、LD19 串口权限
@@ -140,7 +141,7 @@ angle_crop         disabled
 
 当前 launch 不额外传入雷达参数，因此使用上述 C++ 默认值。修改雷达串口或其他默认参数后，需要重新编译工作空间。
 
-## 四、启动 LD19 手持建图
+## 四、启动 LD19 车辆建图
 
 启动：
 
@@ -161,27 +162,49 @@ ros2 launch scout_bringup ld19_mapping.launch.py
 
 1. `ldlidar_stl_ros2_node`：读取 LD19，并发布 `/scan`。
 2. `static_transform_publisher`：发布 `base_link -> base_laser`，当前平移为 `z=0.18 m`。
-3. `cartographer_node`：使用 LD19 的二维激光数据建图。
-4. `cartographer_occupancy_grid_node`：把 Cartographer 地图发布成二维栅格地图。
-5. `rviz2`：显示激光、轨迹和地图。
+3. `scout_can_node`：接收车辆 `0x221`，发布 `/odom` 和 `odom -> base_link`，并把 `/cmd_vel` 转成 `0x111`。
+4. `cartographer_node`：使用 LD19 二维激光和车辆 `/odom` 建图。
+5. `cartographer_occupancy_grid_node`：把 Cartographer 地图发布成二维栅格地图。
+6. `rviz2`：显示激光、轨迹和地图。
 
-建图时手持雷达缓慢移动，尽量保持雷达水平，最后回到起点。
+没有遥控器时，先在一个终端使能 CAN 控制模式：
+
+```bash
+cansend can0 421#01
+```
+
+然后启动建图：
+
+```bash
+source ~/.bashrc
+scout_mapping
+```
+
+再开一个 SSH 终端运行键盘控制：
+
+```bash
+source ~/.bashrc
+scout_teleop --ros-args -p speed:=0.15 -p turn:=0.4
+```
+
+键盘控制中，`i` 前进，`,` 后退，`j` 左转，`l` 右转，`k` 停止，`Ctrl+C` 退出。CAN 节点超过 500 ms 没收到 `/cmd_vel` 也会自动发送零速度。
 
 建图流程：
 
 ```text
-LD19 -> /scan -> Cartographer -> /map
-                 |
-                 └-> map、odom 和机器人位姿 TF
+键盘 -> /cmd_vel -> scout_can_node -> 0x111 -> Scout Mini
+Scout Mini -> 0x221 -> scout_can_node -> /odom -> odom -> base_link
+LD19 -> /scan -> Cartographer -> map -> odom
 base_link -> base_laser
 ```
 
-这个建图配置是纯激光二维建图：
+现在的建图配置是二维激光加车辆里程计：
 
 ```text
-use_odometry = false
+use_odometry = true
 use_imu_data = false
 use_trajectory_builder_2d = true
+provide_odom_frame = false
 ```
 
 建图参数文件：
@@ -295,7 +318,7 @@ source ~/.bashrc
 scout_navigation odom_source:=vehicle
 ```
 
-当前项目还没有把 Nav2 的 `/cmd_vel` 自动转换成 CAN `0x111`。因此 Nav2 会发布速度指令，但车辆控制桥接还需要单独实现。
+现在使用 `scout_navigation odom_source:=vehicle` 时，Nav2 launch 会自动启动 CAN 控制桥接，把 Nav2 的 `/cmd_vel` 转成 CAN `0x111`。
 
 进入 Nav2 的 RViz 后：
 
@@ -357,6 +380,10 @@ navigation:
 
 scout_can:
   interface_name: can0
+  send_control: true
+  use_cmd_vel: false
+  cmd_vel_timeout_ms: 500
+  publish_odom: false
   send_period_ms: 20
   control_vx_mm_s: 0
   control_wz_mrad_s: 0
@@ -483,14 +510,13 @@ scout_can_odometry_rviz rviz:=false
 
 ## 十、主要数据流
 
-### 手持建图
+### LD19 车辆建图
 
 ```text
-LD19 串口
-  -> ldlidar_stl_ros2_node
-  -> /scan
-  -> Cartographer
-  -> /map
+键盘 -> /cmd_vel -> scout_can_node -> 0x111 -> Scout Mini
+Scout Mini -> 0x221 -> scout_can_node -> /odom -> odom -> base_link
+LD19 -> /scan -> Cartographer -> map -> odom
+base_link -> base_laser
 ```
 
 ### Nav2 + MOLA 激光里程计

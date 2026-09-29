@@ -11,6 +11,7 @@
 //   - std::string
 
 
+#include <geometry_msgs/msg/twist.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <rclcpp/rclcpp.hpp>
 
@@ -60,6 +61,7 @@ public:
 private:
   int openCanSocket();              //打开并绑定 can0，返回 Linux CAN socket 的文件描述符
   void onTimer();                             //定时器回调函数，周期执行。
+  void handleCmdVel(const geometry_msgs::msg::Twist::SharedPtr message);
   void sendControlFrame();                       //发送 0x111 控制帧。
   void receiveFrames();                             //从 CAN socket 中读取接收到的数据
   void handleFrame(const struct can_frame & frame);                       //根据 CAN ID 判断这是什么帧，然后分发给不同处理函数
@@ -91,12 +93,14 @@ private:
 
   // CAN 收发开关和周期
   bool send_control_ = true;
+  bool use_cmd_vel_ = false;
   bool receive_system_state_ = true;
   bool receive_motion_feedback_ = true;
   bool receive_wheel_odometry_ = true;
   bool publish_odom_ = false;
   bool log_frames_ = true;
   int send_period_ms_ = 20;
+  int cmd_vel_timeout_ms_ = 500;
 
   // 0x111 控制帧中的目标速度
   int control_vx_mm_s_ = 0;
@@ -114,8 +118,13 @@ private:
   bool has_last_stamp_ = false;
   int64_t last_stamp_ns_ = 0;
 
+  // 键盘 /cmd_vel 的最新接收时间；超时后自动发送零速度。
+  bool has_cmd_vel_ = false;
+  int64_t last_cmd_vel_ns_ = 0;
+
   // ROS 2 通信对象
   rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_subscription_;
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher_;
   std::unique_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
 };

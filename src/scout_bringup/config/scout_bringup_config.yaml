@@ -17,6 +17,8 @@ navigation:
 scout_can:
   interface_name: can0
   send_control: true
+  use_cmd_vel: false
+  cmd_vel_timeout_ms: 500
   publish_odom: false
   log_frames: true
   send_period_ms: 20

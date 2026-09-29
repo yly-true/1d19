@@ -64,8 +64,10 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__traits.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__type_support.hpp
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__builder.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__struct.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__traits.hpp
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__type_support.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__struct.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__traits.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3__builder.hpp
@@ -100,6 +102,7 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform_stamped.hpp
+ /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/twist.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/vector3.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/vector3_stamped.hpp
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/velocity_stamped.hpp

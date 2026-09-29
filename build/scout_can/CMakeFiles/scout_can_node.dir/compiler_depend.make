@@ -63,8 +63,10 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__traits.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__type_support.hpp \
+  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__builder.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__struct.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__traits.hpp \
+  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__type_support.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__struct.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__traits.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3__builder.hpp \
@@ -99,6 +101,7 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/transform_stamped.hpp \
+  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/twist.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/vector3.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/vector3_stamped.hpp \
   /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/velocity_stamped.hpp \
@@ -1135,8 +1138,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
 
-/usr/include/c++/13/bits/requires_hosted.h:
-
 /usr/include/c++/13/bits/refwrap.h:
 
 /usr/include/c++/13/bits/range_access.h:
@@ -1465,13 +1466,11 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /usr/include/aarch64-linux-gnu/bits/cpu-set.h:
 
-/usr/include/c++/13/bits/nested_exception.h:
+/usr/include/c++/13/system_error:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/executors/events_executor/events_executor.hpp:
+/usr/include/c++/13/bits/ostream_insert.h:
 
-/usr/include/c++/13/bits/stl_iterator.h:
-
-/opt/ros/jazzy/include/rmw/rmw/events_statuses/incompatible_qos.h:
+/usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/include/aarch64-linux-gnu/asm/types.h:
 
@@ -1547,10 +1546,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/detail/add_guard_condition_to_rcl_wait_set.hpp:
 
-/opt/ros/jazzy/include/rcl_yaml_param_parser/rcl_yaml_param_parser/visibility_control.h:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameter_types__struct.hpp:
-
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/describe_parameters__type_support.hpp:
 
 /usr/include/c++/13/codecvt:
@@ -1583,12 +1578,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rosidl_runtime_cpp/rosidl_typesupport_cpp/service_type_support.hpp:
 
-/usr/include/c++/13/system_error:
-
-/usr/include/c++/13/bits/ostream_insert.h:
-
-/usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h:
-
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameters__builder.hpp:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/set_parameters_atomically__builder.hpp:
@@ -1608,6 +1597,18 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /opt/ros/jazzy/include/rclcpp/rclcpp/create_timer.hpp:
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_event__type_support.hpp:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/detail/get_parameter_types__struct.hpp:
+
+/opt/ros/jazzy/include/rcl_yaml_param_parser/rcl_yaml_param_parser/visibility_control.h:
+
+/usr/include/c++/13/bits/nested_exception.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/executors/events_executor/events_executor.hpp:
+
+/usr/include/c++/13/bits/stl_iterator.h:
+
+/opt/ros/jazzy/include/rmw/rmw/events_statuses/incompatible_qos.h:
 
 /usr/include/c++/13/deque:
 
@@ -1673,6 +1674,10 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rcl/rcl/graph.h:
 
+/opt/ros/jazzy/include/rclcpp/rclcpp/exceptions.hpp:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__traits.hpp:
+
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__builder.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/subscription_content_filter_options.hpp:
@@ -1706,14 +1711,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /opt/ros/jazzy/include/rclcpp/rclcpp/detail/rmw_implementation_specific_payload.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__type_support.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/detail/rmw_implementation_specific_subscription_payload.hpp:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__type_support.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__traits.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/stdint-least.h:
 
@@ -1833,6 +1830,10 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_descriptor__type_support.hpp:
 
+/opt/ros/jazzy/include/rcl/rcl/error_handling.h:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__type_support.hpp:
+
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3__struct.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/create_generic_subscription.hpp:
@@ -1889,22 +1890,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:
 
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__traits.hpp:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__type_support.hpp:
-
-/opt/ros/jazzy/include/rcl/rcl/error_handling.h:
-
-/opt/ros/jazzy/include/rcl/rcl/types.h:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/executor.hpp:
-
-/usr/include/c++/13/cstddef:
-
-/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__builder.hpp:
-
-/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__builder.hpp:
-
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/collector/metric_details_interface.hpp:
 
 /opt/ros/jazzy/include/rmw/rmw/events_statuses/offered_deadline_missed.h:
@@ -1928,6 +1913,12 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /usr/include/asm-generic/errno-base.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist_with_covariance__traits.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__builder.hpp:
+
+/usr/include/c++/13/ext/string_conversions.h:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/list_parameters.hpp:
 
 /opt/ros/jazzy/include/rcl/rcl/log_level.h:
 
@@ -1954,6 +1945,24 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /usr/include/c++/13/ext/aligned_buffer.h:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/polygon__struct.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/detail/rmw_implementation_specific_subscription_payload.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__type_support.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
+
+/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__traits.hpp:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/twist.hpp:
+
+/usr/include/signal.h:
+
+/usr/include/c++/13/tr1/hypergeometric.tcc:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_base.hpp:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_options.hpp:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3_stamped__traits.hpp:
 
@@ -2041,23 +2050,23 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform_stamped__struct.hpp:
 
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform__type_support.hpp:
-
-/opt/ros/jazzy/include/rcl/rcl/context.h:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:
+/opt/ros/jazzy/include/rcl/rcl/event_callback.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/executors/executor_entities_collector.hpp:
 
 /opt/ros/jazzy/include/rmw/rmw/impl/cpp/demangle.hpp:
 
-/opt/ros/jazzy/include/rcl/rcl/event_callback.h:
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/transform__type_support.hpp:
 
-/opt/ros/jazzy/include/rclcpp/rclcpp/exceptions.hpp:
+/opt/ros/jazzy/include/rcl/rcl/context.h:
 
 /usr/include/c++/13/unordered_set:
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__struct.hpp:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/twist__type_support.hpp:
 
 /opt/ros/jazzy/include/service_msgs/service_msgs/msg/detail/service_event_info__traits.hpp:
 
@@ -2119,15 +2128,19 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/pose.hpp:
 
+/opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:
+
 /opt/ros/jazzy/include/rcl_yaml_param_parser/rcl_yaml_param_parser/parser.h:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/node_interfaces/node_parameters_interface.hpp:
 
-/usr/include/c++/13/ext/string_conversions.h:
-
-/opt/ros/jazzy/include/rcl_interfaces/rcl_interfaces/srv/list_parameters.hpp:
-
 /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/wrench_stamped__type_support.hpp:
+
+/opt/ros/jazzy/include/rcl/rcl/event.h:
+
+/usr/include/aarch64-linux-gnu/bits/fcntl-linux.h:
+
+/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__type_support.hpp:
 
 /opt/ros/jazzy/include/rcl/rcl/node.h:
 
@@ -2136,6 +2149,16 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /usr/include/c++/13/ostream:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:
+
+/usr/include/c++/13/cstddef:
+
+/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/duration__builder.hpp:
+
+/opt/ros/jazzy/include/builtin_interfaces/builtin_interfaces/msg/detail/time__builder.hpp:
+
+/opt/ros/jazzy/include/rcl/rcl/types.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/executor.hpp:
 
 /opt/ros/jazzy/include/rosidl_dynamic_typesupport/rosidl_dynamic_typesupport/visibility_control.h:
 
@@ -2200,12 +2223,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /usr/include/c++/13/bits/stl_iterator_base_funcs.h:
 
 /opt/ros/jazzy/include/libstatistics_collector/libstatistics_collector/visibility_control.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/fcntl-linux.h:
-
-/opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/velocity_stamped__type_support.hpp:
-
-/opt/ros/jazzy/include/rcl/rcl/event.h:
 
 /usr/include/c++/13/bits/concept_check.h:
 
@@ -2406,14 +2423,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /opt/ros/jazzy/include/rclcpp/rclcpp/parameter_service.hpp:
 
 /opt/ros/jazzy/include/rclcpp/rclcpp/parameter_value.hpp:
-
-/usr/include/signal.h:
-
-/usr/include/c++/13/tr1/hypergeometric.tcc:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_base.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/publisher_options.hpp:
 
 /usr/include/c++/13/bits/predefined_ops.h:
 
@@ -2687,6 +2696,12 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 
 /opt/ros/jazzy/include/rosidl_runtime_c/rosidl_runtime_c/type_description/type_source__struct.h:
 
+/usr/include/aarch64-linux-gnu/bits/byteswap.h:
+
+/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:
+
+/opt/ros/jazzy/include/rosidl_runtime_cpp/rosidl_runtime_cpp/bounded_vector.hpp:
+
 /opt/ros/jazzy/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h:
 
 /opt/ros/jazzy/include/tf2/tf2/LinearMath/Matrix3x3.hpp:
@@ -2732,12 +2747,6 @@ CMakeFiles/scout_can_node.dir/src/scout_can_node.cpp.o: /home/yly/ld19_hand_on/s
 /opt/ros/jazzy/include/type_description_interfaces/type_description_interfaces/msg/detail/key_value__struct.h:
 
 /opt/ros/jazzy/include/tf2/tf2/LinearMath/Quaternion.hpp:
-
-/opt/ros/jazzy/include/rclcpp/rclcpp/experimental/intra_process_manager.hpp:
-
-/opt/ros/jazzy/include/rosidl_runtime_cpp/rosidl_runtime_cpp/bounded_vector.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/byteswap.h:
 
 /opt/ros/jazzy/include/tf2/tf2/LinearMath/Scalar.hpp:
 

@@ -84,12 +84,14 @@ ScoutCanNode::ScoutCanNode()
 
   interface_name_ = declare_parameter<std::string>("interface_name", "can0");
   send_control_ = declare_parameter<bool>("send_control", true);
+  use_cmd_vel_ = declare_parameter<bool>("use_cmd_vel", false);
   receive_system_state_ = declare_parameter<bool>("receive_system_state", true);
   receive_motion_feedback_ = declare_parameter<bool>("receive_motion_feedback", true);
   receive_wheel_odometry_ = declare_parameter<bool>("receive_wheel_odometry", true);
   publish_odom_ = declare_parameter<bool>("publish_odom", false);
   log_frames_ = declare_parameter<bool>("log_frames", true);
   send_period_ms_ = declare_parameter<int>("send_period_ms", 20);
+  cmd_vel_timeout_ms_ = declare_parameter<int>("cmd_vel_timeout_ms", 500);
   control_vx_mm_s_ = declare_parameter<int>("control_vx_mm_s", 0);
   control_wz_mrad_s_ = declare_parameter<int>("control_wz_mrad_s", 0);
   control_vy_mm_s_ = declare_parameter<int>("control_vy_mm_s", 0);
@@ -101,6 +103,12 @@ ScoutCanNode::ScoutCanNode()
   if (publish_odom_) {
     odom_publisher_ = create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
     tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+  }
+
+  if (use_cmd_vel_) {
+    cmd_vel_subscription_ = create_subscription<geometry_msgs::msg::Twist>(
+      "/cmd_vel", 10,
+      std::bind(&ScoutCanNode::handleCmdVel, this, std::placeholders::_1));
   }
 
   const auto period = std::chrono::milliseconds(std::max(1, send_period_ms_));
@@ -164,9 +172,29 @@ int ScoutCanNode::openCanSocket()
 void ScoutCanNode::onTimer()
 {
   if (send_control_) {
+    if (use_cmd_vel_) {
+      const int64_t now_ns = now().nanoseconds();
+      const int64_t timeout_ns =
+        static_cast<int64_t>(std::max(1, cmd_vel_timeout_ms_)) * 1000000;
+      if (!has_cmd_vel_ || now_ns - last_cmd_vel_ns_ > timeout_ns) {
+        control_vx_mm_s_ = 0;
+        control_wz_mrad_s_ = 0;
+        control_vy_mm_s_ = 0;
+      }
+    }
     sendControlFrame();
   }
   receiveFrames();
+}
+
+void ScoutCanNode::handleCmdVel(
+  const geometry_msgs::msg::Twist::SharedPtr message)
+{
+  control_vx_mm_s_ = static_cast<int>(std::lround(message->linear.x * 1000.0));
+  control_wz_mrad_s_ = static_cast<int>(std::lround(message->angular.z * 1000.0));
+  control_vy_mm_s_ = static_cast<int>(std::lround(message->linear.y * 1000.0));
+  last_cmd_vel_ns_ = now().nanoseconds();
+  has_cmd_vel_ = true;
 }
 
 // 功能一：发送 0x111 目标速度控制帧。

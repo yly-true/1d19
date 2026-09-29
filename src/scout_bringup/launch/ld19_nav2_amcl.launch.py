@@ -24,6 +24,7 @@ def generate_launch_description():
 
     common_config = config['common']
     navigation_config = config['navigation']
+    can_parameters = dict(config['scout_can'])
     configured_map = navigation_config['map']
     map_default = (
         configured_map
@@ -35,6 +36,16 @@ def generate_launch_description():
     map_yaml = LaunchConfiguration('map')
     rviz = LaunchConfiguration('rviz')
     odom_source = LaunchConfiguration('odom_source')
+
+    # 使用车辆里程计时：接收 0x221 发布 /odom，并把 Nav2 的 /cmd_vel 转成 0x111。
+    can_parameters['send_control'] = True
+    can_parameters['use_cmd_vel'] = True
+    can_parameters['receive_system_state'] = False
+    can_parameters['receive_motion_feedback'] = True
+    can_parameters['receive_wheel_odometry'] = False
+    can_parameters['publish_odom'] = True
+    can_parameters['log_frames'] = False
+    can_parameters['use_sim_time'] = use_sim_time
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -104,7 +115,15 @@ def generate_launch_description():
         ),
 
         # 选择车辆里程计时，不启动 MOLA。
-        # 车辆底盘需要自己发布 odom -> base_link，最好同时发布 /odom。
+        # CAN 节点发布 odom -> base_link，并接收 Nav2 的 /cmd_vel。
+        Node(
+            package='scout_can',
+            executable='scout_can_node',
+            name='scout_can_navigation',
+            output='screen',
+            condition=IfCondition(EqualsSubstitution(odom_source, 'vehicle')),
+            parameters=[can_parameters],
+        ),
 
         # Nav2 localization: map_server + AMCL；不启动 SLAM。
         IncludeLaunchDescription(

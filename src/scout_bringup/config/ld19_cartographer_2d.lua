@@ -6,14 +6,14 @@ options = {
   trajectory_builder = TRAJECTORY_BUILDER,
 
   map_frame = "map",
-  tracking_frame = "base_laser",
-  published_frame = "base_link",
+  tracking_frame = "base_link",
+  published_frame = "odom",
   odom_frame = "odom",
 
-  provide_odom_frame = true,
+  provide_odom_frame = false,
   publish_frame_projected_to_2d = true,
   use_pose_extrapolator = true,
-  use_odometry = false,
+  use_odometry = true,
   use_nav_sat = false,
   use_landmarks = false,
 

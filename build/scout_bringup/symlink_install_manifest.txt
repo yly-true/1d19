@@ -1,6 +1,7 @@
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/config/ld19_cartographer_2d.lua
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/config/nav2_navigation_params.yaml
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/config/scout_bringup_config.yaml
+/home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/launch/__pycache__/ld19_mapping.launch.cpython-312.pyc
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/launch/ld19_mapping.launch.py
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/launch/ld19_nav2_amcl.launch.py
 /home/yly/ld19_hand_on/install/scout_bringup/share/scout_bringup/launch/scout_can_communication_test.launch.py
