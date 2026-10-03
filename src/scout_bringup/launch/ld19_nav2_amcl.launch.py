@@ -8,13 +8,12 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import EqualsSubstitution, LaunchConfiguration
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
 def generate_launch_description():
     package_share = get_package_share_directory('scout_bringup')
-    mola_share = get_package_share_directory('mola_lidar_odometry')
     nav2_share = get_package_share_directory('nav2_bringup')
     with open(
         os.path.join(package_share, 'config', 'scout_bringup_config.yaml'),
@@ -35,9 +34,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     map_yaml = LaunchConfiguration('map')
     rviz = LaunchConfiguration('rviz')
-    odom_source = LaunchConfiguration('odom_source')
-
-    # 使用车辆里程计时：接收 0x221 发布 /odom，并把 Nav2 的 /cmd_vel 转成 0x111。
+    # CAN 车辆里程计：接收 0x221 发布 /odom，并把 Nav2 的 /cmd_vel 转成 0x111。
     can_parameters['send_control'] = True
     can_parameters['use_cmd_vel'] = True
     can_parameters['receive_system_state'] = False
@@ -51,11 +48,6 @@ def generate_launch_description():
         DeclareLaunchArgument(
             'use_sim_time',
             default_value=str(common_config['use_sim_time']).lower(),
-        ),
-        DeclareLaunchArgument(
-            'odom_source',
-            default_value=str(navigation_config['odom_source']),
-            description='Odometry source: laser or vehicle',
         ),
         DeclareLaunchArgument(
             'map',
@@ -85,43 +77,11 @@ def generate_launch_description():
             output='screen',
         ),
 
-        # 选择激光里程计时，由 MOLA 发布 odom -> base_link。
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                os.path.join(
-                    mola_share,
-                    'ros2-launchs',
-                    'ros2-lidar-odometry.launch.py',
-                )
-            ),
-            condition=IfCondition(EqualsSubstitution(odom_source, 'laser')),
-            launch_arguments={
-                'use_sim_time': use_sim_time,
-                'lidar_topic_name': '/scan',
-                'lidar_topic_type': 'LaserScan',
-                'mola_lo_pipeline': os.path.join(
-                    mola_share, 'pipelines', 'lidar2d.yaml'
-                ),
-                'mola_lo_reference_frame': 'odom',
-                'mola_bridge_odometry_frame': 'odom',
-                'mola_tf_base_link': 'base_link',
-                'publish_localization_following_rep105': 'False',
-                'enforce_planar_motion': 'True',
-                'ignore_lidar_pose_from_tf': 'False',
-                'use_rviz': 'False',
-                'use_mola_gui': 'False',
-                'use_state_estimator': 'False',
-            }.items(),
-        ),
-
-        # 选择车辆里程计时，不启动 MOLA。
-        # CAN 节点发布 odom -> base_link，并接收 Nav2 的 /cmd_vel。
         Node(
             package='scout_can',
             executable='scout_can_node',
             name='scout_can_navigation',
             output='screen',
-            condition=IfCondition(EqualsSubstitution(odom_source, 'vehicle')),
             parameters=[can_parameters],
         ),
 

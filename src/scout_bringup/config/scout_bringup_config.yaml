@@ -11,8 +11,6 @@ mapping:
 
 navigation:
   map: ld19_handheld_map.yaml
-  # laser：MOLA 激光里程计；vehicle：车辆底盘提供 odom -> base_link
-  odom_source: laser
 
 scout_can:
   interface_name: can0
