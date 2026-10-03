@@ -10,6 +10,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
 
 add_executable(scout_can_node src/scout_can_node.cpp)
+target_compile_features(scout_can_node PRIVATE cxx_std_17)
 target_include_directories(scout_can_node PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
@@ -31,5 +32,14 @@ install(TARGETS scout_can_node
 install(DIRECTORY include/
   DESTINATION include
 )
+
+if(BUILD_TESTING)
+  enable_testing()
+  add_executable(planar_odometry_test test/planar_odometry_test.cpp)
+  target_compile_features(planar_odometry_test PRIVATE cxx_std_17)
+  target_compile_options(planar_odometry_test PRIVATE -UNDEBUG)
+  target_include_directories(planar_odometry_test PRIVATE include)
+  add_test(NAME planar_odometry COMMAND planar_odometry_test)
+endif()
 
 ament_package()

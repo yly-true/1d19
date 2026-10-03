@@ -62,26 +62,6 @@ void encodeSigned16(__u8 * data, int value)
 ScoutCanNode::ScoutCanNode()
 : rclcpp::Node("scout_can")
 {
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-// 普通类直接创建指针：
-
-//   class A
-//   {
-//   };
-
-//   A* p = new A();
-
-//   或者使用智能指针：
-
-//   std::shared_ptr<A> p =
-//     std::make_shared<A>();
-
-
-
-
-
   interface_name_ = declare_parameter<std::string>("interface_name", "can0");
   send_control_ = declare_parameter<bool>("send_control", true);
   use_cmd_vel_ = declare_parameter<bool>("use_cmd_vel", false);
@@ -97,6 +77,27 @@ ScoutCanNode::ScoutCanNode()
   control_vy_mm_s_ = declare_parameter<int>("control_vy_mm_s", 0);
   odom_frame_ = declare_parameter<std::string>("odom_frame", "odom");
   base_frame_ = declare_parameter<std::string>("base_frame", "base_link");
+  odom_timeout_sec_ = declare_parameter<double>("odom_timeout_sec", 0.2);
+  if (!std::isfinite(odom_timeout_sec_) || odom_timeout_sec_ <= 0.0) {
+    throw std::invalid_argument("odom_timeout_sec must be finite and positive");
+  }
+  const std::array<std::string, 3> axes{"vx", "vy", "wz"};
+  const std::array<double, 3> default_stddev{0.03, 0.06, 0.03};
+  for (size_t i = 0; i < axes.size(); ++i) {
+    odom_scale_[i] = declare_parameter<double>("odom_" + axes[i] + "_scale", 1.0);
+    const double stddev = declare_parameter<double>(
+      "odom_" + axes[i] + "_stddev", default_stddev[i]);
+    if (!std::isfinite(odom_scale_[i]) || odom_scale_[i] <= 0.0 ||
+      !std::isfinite(stddev) || stddev <= 0.0 ||
+      !std::isfinite(stddev * stddev))
+    {
+      throw std::invalid_argument("odometry scales and standard deviations must be finite and positive");
+    }
+    velocity_variance_[i] = stddev * stddev;
+  }
+  if (publish_odom_ && get_parameter("use_sim_time").as_bool()) {
+    throw std::invalid_argument("live CAN odometry requires use_sim_time=false; replay recorded /odom instead");
+  }
 
   socket_fd_ = openCanSocket();
 
@@ -116,11 +117,10 @@ ScoutCanNode::ScoutCanNode()
 
   RCLCPP_INFO(
     get_logger(),
-    "SocketCAN %s ready: send_control=%s, publish_odom=%s, odom_source=%s",
+    "Scout Mini Omni CAN %s ready (protocol V2): send_control=%s, publish_odom=%s",
     interface_name_.c_str(),
     send_control_ ? "true" : "false",
-    publish_odom_ ? "true" : "false",
-    publish_odom_ ? "CAN 0x221" : "disabled");
+    publish_odom_ ? "true" : "false");
 }
 
 ScoutCanNode::~ScoutCanNode()
@@ -136,6 +136,13 @@ int ScoutCanNode::openCanSocket()
   if (fd < 0) {
     throw std::runtime_error(
       "cannot create CAN socket: " + std::string(std::strerror(errno)));
+  }
+
+  const int timestamping = 1;
+  if (setsockopt(fd, SOL_SOCKET, SO_TIMESTAMPNS, &timestamping, sizeof(timestamping)) < 0) {
+    const std::string error = std::strerror(errno);
+    ::close(fd);
+    throw std::runtime_error("cannot enable CAN receive timestamps: " + error);
   }
 
   struct ifreq interface_request {};
@@ -190,9 +197,20 @@ void ScoutCanNode::onTimer()
 void ScoutCanNode::handleCmdVel(
   const geometry_msgs::msg::Twist::SharedPtr message)
 {
-  control_vx_mm_s_ = static_cast<int>(std::lround(message->linear.x * 1000.0));
-  control_wz_mrad_s_ = static_cast<int>(std::lround(message->angular.z * 1000.0));
-  control_vy_mm_s_ = static_cast<int>(std::lround(message->linear.y * 1000.0));
+  if (!std::isfinite(message->linear.x) || !std::isfinite(message->linear.y) ||
+    !std::isfinite(message->angular.z))
+  {
+    has_cmd_vel_ = false;
+    RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000, "ignoring non-finite /cmd_vel");
+    return;
+  }
+  // Clamp before conversion, not only when encoding, to avoid integer overflow.
+  control_vx_mm_s_ = static_cast<int>(std::lround(
+      std::clamp(message->linear.x * 1000.0, -32768.0, 32767.0)));
+  control_wz_mrad_s_ = static_cast<int>(std::lround(
+      std::clamp(message->angular.z * 1000.0, -32768.0, 32767.0)));
+  control_vy_mm_s_ = static_cast<int>(std::lround(
+      std::clamp(message->linear.y * 1000.0, -32768.0, 32767.0)));
   last_cmd_vel_ns_ = now().nanoseconds();
   has_cmd_vel_ = true;
 }
@@ -205,6 +223,7 @@ void ScoutCanNode::sendControlFrame()
   frame.can_dlc = 8;
   encodeSigned16(frame.data, control_vx_mm_s_);
   encodeSigned16(frame.data + 2, control_wz_mrad_s_);
+  // Scout Mini Omni V2: bytes 4..5 carry lateral velocity (mm/s).
   encodeSigned16(frame.data + 4, control_vy_mm_s_);
 
   if (::write(socket_fd_, &frame, sizeof(frame)) != sizeof(frame)) {
@@ -218,24 +237,57 @@ void ScoutCanNode::receiveFrames()
 {
   while (true) {
     struct can_frame frame{};
-    const ssize_t bytes = ::read(socket_fd_, &frame, sizeof(frame));
+    struct iovec payload {&frame, sizeof(frame)};
+    alignas(struct cmsghdr) char control[CMSG_SPACE(sizeof(struct timespec))]{};
+    struct msghdr message{};
+    message.msg_iov = &payload;
+    message.msg_iovlen = 1;
+    message.msg_control = control;
+    message.msg_controllen = sizeof(control);
+    const ssize_t bytes = ::recvmsg(socket_fd_, &message, 0);
     if (bytes < 0) {
       if (errno == EAGAIN || errno == EWOULDBLOCK) {
         return;
+      }
+      if (errno == EINTR) {
+        continue;
       }
       RCLCPP_WARN_THROTTLE(
         get_logger(), *get_clock(), 2000,
         "failed to receive CAN frame: %s", std::strerror(errno));
       return;
     }
-    if (bytes == static_cast<ssize_t>(sizeof(frame))) {
-      handleFrame(frame);
+    if (bytes != static_cast<ssize_t>(sizeof(frame)) ||
+      (message.msg_flags & (MSG_TRUNC | MSG_CTRUNC)))
+    {
+      RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000, "incomplete CAN frame");
+      return;
     }
+    int64_t stamp_ns = 0;
+    for (auto * header = CMSG_FIRSTHDR(&message); header;
+      header = CMSG_NXTHDR(&message, header))
+    {
+      if (header->cmsg_level == SOL_SOCKET && header->cmsg_type == SCM_TIMESTAMPNS &&
+        header->cmsg_len >= CMSG_LEN(sizeof(struct timespec)))
+      {
+        struct timespec timestamp{};
+        std::memcpy(&timestamp, CMSG_DATA(header), sizeof(timestamp));
+        stamp_ns = static_cast<int64_t>(timestamp.tv_sec) * 1000000000 + timestamp.tv_nsec;
+      }
+    }
+    if (stamp_ns <= 0) {
+      RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000, "CAN frame has no receive timestamp; dropped");
+      continue;
+    }
+    handleFrame(frame, stamp_ns);
   }
 }
 
-void ScoutCanNode::handleFrame(const struct can_frame & frame)
+void ScoutCanNode::handleFrame(const struct can_frame & frame, int64_t stamp_ns)
 {
+  if (frame.can_id & (CAN_EFF_FLAG | CAN_RTR_FLAG | CAN_ERR_FLAG)) {
+    return;
+  }
   const canid_t id = frame.can_id & CAN_SFF_MASK;
   if (receive_system_state_ && id == kSystemStateId && frame.can_dlc >= 8) {
     handleSystemStateFrame(frame);
@@ -244,7 +296,7 @@ void ScoutCanNode::handleFrame(const struct can_frame & frame)
 
   // 0x221 reports the chassis's actual velocity, which is integrated into odometry.
   if (receive_motion_feedback_ && id == kMotionFeedbackId && frame.can_dlc >= 6) {
-    handleMotionFeedbackFrame(frame);
+    handleMotionFeedbackFrame(frame, stamp_ns);
     return;
   }
 
@@ -267,11 +319,11 @@ void ScoutCanNode::handleSystemStateFrame(const struct can_frame & frame)
     get_logger(), *get_clock(), 1000,
     "RX 0x211: status=%u mode=%u battery_raw=%u fault=%u counter=%u",
     frame.data[0], frame.data[1], decodeUnsigned16(frame.data + 2),
-    frame.data[5], frame.data[7]);
+    decodeUnsigned16(frame.data + 4), frame.data[7]);
 }
 
 // 功能三：解析 0x221 实际速度帧，并按需生成 /odom。
-void ScoutCanNode::handleMotionFeedbackFrame(const struct can_frame & frame)
+void ScoutCanNode::handleMotionFeedbackFrame(const struct can_frame & frame, int64_t stamp_ns)
 {
   const double vx = static_cast<double>(decodeSigned16(frame.data)) / 1000.0;
   const double wz = static_cast<double>(decodeSigned16(frame.data + 2)) * 0.001;
@@ -283,7 +335,7 @@ void ScoutCanNode::handleMotionFeedbackFrame(const struct can_frame & frame)
     vx, vy, wz);
 
   if (publish_odom_) {
-    publishOdometry(vx, vy, wz);
+    publishOdometry(vx, vy, wz, stamp_ns);
   }
 }
 
@@ -296,41 +348,56 @@ void ScoutCanNode::handleWheelOdometerFrame(const struct can_frame & frame)
     decodeSigned32(frame.data), decodeSigned32(frame.data + 4));
 }
 
-void ScoutCanNode::publishOdometry(double vx, double vy, double wz)
+void ScoutCanNode::publishOdometry(double vx, double vy, double wz, int64_t stamp_ns)
 {
-  const auto stamp = now();
-  const int64_t stamp_ns = stamp.nanoseconds();
-  if (has_last_stamp_) {
-    const double dt = static_cast<double>(stamp_ns - last_stamp_ns_) * 1e-9;
-    if (dt > 0.0 && dt < 1.0) {
-      x_ += (vx * std::cos(yaw_) - vy * std::sin(yaw_)) * dt;
-      y_ += (vx * std::sin(yaw_) + vy * std::cos(yaw_)) * dt;
-      yaw_ += wz * dt;
-    }
+  const std::array<double, 3> velocity{
+    vx * odom_scale_[0], vy * odom_scale_[1], wz * odom_scale_[2]};
+  if (stamp_ns <= 0 || !std::all_of(velocity.begin(), velocity.end(),
+      [](double value) {return std::isfinite(value);}))
+  {
+    return;
   }
-  last_stamp_ns_ = stamp_ns;
-  has_last_stamp_ = true;
+  const auto result = odometry_.update(
+    stamp_ns, velocity, velocity_variance_, odom_timeout_sec_);
+  if (result == PlanarOdometry::Update::Duplicate) {
+    return;
+  }
+  if (result == PlanarOdometry::Update::Discontinuity) {
+    RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000,
+      "CAN feedback gap or clock jump: missing displacement was not integrated");
+  }
 
   tf2::Quaternion quaternion;
-  quaternion.setRPY(0.0, 0.0, yaw_);
+  quaternion.setRPY(0.0, 0.0, odometry_.yaw);
 
   nav_msgs::msg::Odometry odometry;
-  odometry.header.stamp = stamp;
+  odometry.header.stamp = rclcpp::Time(stamp_ns, RCL_ROS_TIME);
   odometry.header.frame_id = odom_frame_;
   odometry.child_frame_id = base_frame_;
-  odometry.pose.pose.position.x = x_;
-  odometry.pose.pose.position.y = y_;
+  odometry.pose.pose.position.x = odometry_.x;
+  odometry.pose.pose.position.y = odometry_.y;
   odometry.pose.pose.orientation = tf2::toMsg(quaternion);
-  odometry.twist.twist.linear.x = vx;
-  odometry.twist.twist.linear.y = vy;
-  odometry.twist.twist.angular.z = wz;
+  odometry.twist.twist.linear.x = velocity[0];
+  odometry.twist.twist.linear.y = velocity[1];
+  odometry.twist.twist.angular.z = velocity[2];
+  const std::array<size_t, 3> indices{0, 1, 5};
+  for (size_t i = 0; i < indices.size(); ++i) {
+    odometry.twist.covariance[indices[i] * 6 + indices[i]] = velocity_variance_[i];
+    for (size_t j = 0; j < indices.size(); ++j) {
+      odometry.pose.covariance[indices[i] * 6 + indices[j]] = odometry_.covariance[i * 3 + j];
+    }
+  }
+  for (const size_t index : {2, 3, 4}) {
+    odometry.pose.covariance[index * 6 + index] = 1e6;
+    odometry.twist.covariance[index * 6 + index] = 1e6;
+  }
   odom_publisher_->publish(odometry);
 
   geometry_msgs::msg::TransformStamped transform;
   transform.header = odometry.header;
   transform.child_frame_id = base_frame_;
-  transform.transform.translation.x = x_;
-  transform.transform.translation.y = y_;
+  transform.transform.translation.x = odometry_.x;
+  transform.transform.translation.y = odometry_.y;
   transform.transform.rotation = odometry.pose.pose.orientation;
   tf_broadcaster_->sendTransform(transform);
 }

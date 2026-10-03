@@ -1,5 +1,4 @@
-# 所有启动文件共用的总配置。
-# 修改后重新 source ~/.bashrc 即可使用；也可以在命令行覆盖 launch 参数。
+# 建图、导航及 CAN 启动配置；修改后重新启动对应 launch。
 
 common:
   use_sim_time: false
@@ -25,3 +24,12 @@ scout_can:
   control_vy_mm_s: 0
   odom_frame: odom
   base_frame: base_link
+  # 仅校准反馈，不改变控制指令；系数 = 实际位移 / 原始里程计位移。
+  odom_vx_scale: 1.0
+  odom_vy_scale: 1.0
+  odom_wz_scale: 1.0
+  # 校准后速度的标准差（m/s、m/s、rad/s），初始估计，需实测调整。
+  odom_vx_stddev: 0.03
+  odom_vy_stddev: 0.06
+  odom_wz_stddev: 0.03
+  odom_timeout_sec: 0.2

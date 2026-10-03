@@ -23,7 +23,6 @@ def generate_launch_description():
 
     common_config = config['common']
     navigation_config = config['navigation']
-    can_parameters = dict(config['scout_can'])
     configured_map = navigation_config['map']
     map_default = (
         configured_map
@@ -34,16 +33,6 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     map_yaml = LaunchConfiguration('map')
     rviz = LaunchConfiguration('rviz')
-    # CAN 车辆里程计：接收 0x221 发布 /odom，并把 Nav2 的 /cmd_vel 转成 0x111。
-    can_parameters['send_control'] = True
-    can_parameters['use_cmd_vel'] = True
-    can_parameters['receive_system_state'] = False
-    can_parameters['receive_motion_feedback'] = True
-    can_parameters['receive_wheel_odometry'] = False
-    can_parameters['publish_odom'] = True
-    can_parameters['log_frames'] = False
-    can_parameters['use_sim_time'] = use_sim_time
-
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_sim_time',
@@ -59,30 +48,11 @@ def generate_launch_description():
             default_value=str(common_config['rviz']).lower(),
         ),
 
-        Node(
-            package='ldlidar_stl_ros2',
-            executable='ldlidar_stl_ros2_node',
-            output='screen',
-        ),
-
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            arguments=[
-                '--x', '0.0', '--y', '0.0', '--z', '0.18',
-                '--qx', '0.0', '--qy', '0.0', '--qz', '0.0', '--qw', '1.0',
-                '--frame-id', 'base_link',
-                '--child-frame-id', 'base_laser',
-            ],
-            output='screen',
-        ),
-
-        Node(
-            package='scout_can',
-            executable='scout_can_node',
-            name='scout_can_navigation',
-            output='screen',
-            parameters=[can_parameters],
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(package_share, 'launch', 'ld19_vehicle.launch.py')
+            ),
+            launch_arguments={'use_sim_time': use_sim_time}.items(),
         ),
 
         # Nav2 localization: map_server + AMCL；不启动 SLAM。
