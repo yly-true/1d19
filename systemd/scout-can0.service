@@ -1,0 +1,14 @@
+[Unit]
+Description=Configure Scout CAN interface at 500 kbit/s
+BindsTo=sys-subsystem-net-devices-can0.device
+After=sys-subsystem-net-devices-can0.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/ip link set dev can0 type can bitrate 500000
+ExecStart=/usr/sbin/ip link set dev can0 up
+ExecStop=-/usr/sbin/ip link set dev can0 down
+
+[Install]
+WantedBy=sys-subsystem-net-devices-can0.device

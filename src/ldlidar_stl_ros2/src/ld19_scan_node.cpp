@@ -372,18 +372,19 @@ void  ToLaserscanMessagePublish(ldlidar::Points2D& src,  double lidar_spin_freq,
   }
   // Adjust the parameters according to the demand
   angle_min = 0;
-  angle_max = (2 * M_PI);
   range_min = 0.02;
-  range_max = 25;
-  int beam_size = static_cast<int>(src.size());
-  angle_increment = (angle_max - angle_min) / (float)(beam_size -1);
+  range_max = 12.0f; // LD19 specified maximum range at 70% reflectivity
+  // Keep LaserScan geometry identical across revolutions. The number of raw
+  // LD19 points varies slightly, and SLAM Toolbox drops scans whose size changes.
+  constexpr int beam_size = 720;
+  angle_increment = static_cast<float>(2.0 * M_PI / beam_size);
+  angle_max = angle_min + (beam_size - 1) * angle_increment;
   // Calculate the number of scanning points
   if (lidar_spin_freq > 0) {
     sensor_msgs::msg::LaserScan output;
     // GetLaserScanData() returns a completed revolution.  LaserScan's stamp
     // represents the first ray, while time_increment advances through the
-    // revolution, so move the stamp back by one scan period.  Using the end
-    // time here makes consecutive scans overlap in Cartographer's timeline.
+    // revolution, so move the stamp back by one scan period.
     output.header.stamp = start_scan_time - rclcpp::Duration::from_seconds(scan_time);
     output.header.frame_id = setting.frame_id;
     output.angle_min = angle_min;
@@ -391,11 +392,7 @@ void  ToLaserscanMessagePublish(ldlidar::Points2D& src,  double lidar_spin_freq,
     output.range_min = range_min;
     output.range_max = range_max;
     output.angle_increment = angle_increment;
-    if (beam_size <= 1) {
-      output.time_increment = 0;
-    } else {
-      output.time_increment = static_cast<float>(scan_time / (double)(beam_size - 1));
-    }
+    output.time_increment = static_cast<float>(scan_time / (beam_size - 1));
     output.scan_time = scan_time;
     // First fill all the data with Nan
     output.ranges.assign(beam_size, std::numeric_limits<float>::quiet_NaN());
@@ -418,37 +415,14 @@ void  ToLaserscanMessagePublish(ldlidar::Points2D& src,  double lidar_spin_freq,
       }
 
       float angle = ANGLE_TO_RADIAN(dir_angle); // Lidar angle unit form degree transform to radian
-      int index = static_cast<int>(ceil((angle - angle_min) / angle_increment));
-      if (index < beam_size) {
-        if (index < 0) {
-          RCLCPP_ERROR(node->get_logger(), "error index: %d, beam_size: %d, angle: %f, output.angle_min: %f, output.angle_increment: %f", 
-            index, beam_size, angle, angle_min, angle_increment);
+      int index = static_cast<int>(std::floor((angle - angle_min) / angle_increment));
+      if (index >= 0 && index < beam_size) {
+        const int scan_index = setting.laser_scan_dir ? (beam_size - index) % beam_size : index;
+        // Multiple raw points may land in one beam; keep the nearest range.
+        if (std::isnan(output.ranges[scan_index]) || range < output.ranges[scan_index]) {
+          output.ranges[scan_index] = range;
         }
-
-        if (setting.laser_scan_dir) {
-          int index_anticlockwise = beam_size - index - 1;
-          // If the current content is Nan, it is assigned directly
-          if (std::isnan(output.ranges[index_anticlockwise])) {
-            output.ranges[index_anticlockwise] = range;
-          } else { // Otherwise, only when the distance is less than the current
-                    //   value, it can be re assigned
-            if (range < output.ranges[index_anticlockwise]) {
-                output.ranges[index_anticlockwise] = range;
-            }
-          }
-          output.intensities[index_anticlockwise] = intensity;
-        } else {
-          // If the current content is Nan, it is assigned directly
-          if (std::isnan(output.ranges[index])) {
-            output.ranges[index] = range;
-          } else { // Otherwise, only when the distance is less than the current
-                  //   value, it can be re assigned
-            if (range < output.ranges[index]) {
-              output.ranges[index] = range;
-            }
-          }
-          output.intensities[index] = intensity;
-        }
+        output.intensities[scan_index] = intensity;
       }
     }
     lidarpub->publish(output);

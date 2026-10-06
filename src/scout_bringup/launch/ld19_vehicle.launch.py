@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import os
 
-import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+import yaml
 
 
 def generate_launch_description():
@@ -15,6 +15,7 @@ def generate_launch_description():
               encoding='utf-8') as config_file:
         config = yaml.safe_load(config_file)
 
+    laser_mount = config['laser_mount']
     use_sim_time = LaunchConfiguration('use_sim_time')
     can_parameters = dict(config['scout_can'])
     can_parameters.update({
@@ -38,8 +39,10 @@ def generate_launch_description():
         Node(
             package='tf2_ros', executable='static_transform_publisher',
             arguments=[
-                '--x', '0.0', '--y', '0.0', '--z', '0.18',
-                '--qx', '0.0', '--qy', '0.0', '--qz', '0.0', '--qw', '1.0',
+                '--x', str(laser_mount['x']),
+                '--y', str(laser_mount['y']),
+                '--z', str(laser_mount['z']),
+                '--yaw', str(laser_mount['yaw']),
                 '--frame-id', 'base_link', '--child-frame-id', 'base_laser',
             ],
             output='screen',

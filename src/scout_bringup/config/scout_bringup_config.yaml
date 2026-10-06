@@ -4,12 +4,15 @@ common:
   use_sim_time: false
   rviz: true
 
-mapping:
-  resolution: 0.05
-  publish_period_sec: 1.0
+# LD19 relative to base_link: meters and radians. Measure x/y/yaw on the robot.
+laser_mount:
+  x: 0.0
+  y: 0.0
+  z: 0.18
+  yaw: 0.0
 
 navigation:
-  map: ld19_handheld_map.yaml
+  map: /home/yly/ld19_field_data/my_map.yaml
 
 scout_can:
   interface_name: can0
@@ -25,7 +28,7 @@ scout_can:
   odom_frame: odom
   base_frame: base_link
   # 仅校准反馈，不改变控制指令；系数 = 实际位移 / 原始里程计位移。
-  odom_vx_scale: 1.0
+  odom_vx_scale: 0.9
   odom_vy_scale: 1.0
   odom_wz_scale: 1.0
   # 校准后速度的标准差（m/s、m/s、rad/s），初始估计，需实测调整。

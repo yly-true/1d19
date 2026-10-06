@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 import os
 
-import yaml
-
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+import yaml
 
 
 def generate_launch_description():
@@ -23,6 +22,7 @@ def generate_launch_description():
     rviz = LaunchConfiguration('rviz')
     can_parameters = dict(config['scout_can'])
     can_parameters['send_control'] = True
+    can_parameters['use_cmd_vel'] = True
     can_parameters['receive_system_state'] = False
     can_parameters['receive_motion_feedback'] = True
     can_parameters['receive_wheel_odometry'] = False

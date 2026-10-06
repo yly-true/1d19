@@ -10,7 +10,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include "scout_can/planar_odometry.hpp"
 
-namespace tf2_ros { class TransformBroadcaster; }
+namespace tf2_ros {class TransformBroadcaster;}
 struct can_frame;
 
 class ScoutCanNode final : public rclcpp::Node

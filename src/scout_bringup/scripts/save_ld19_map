@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-map_dir="${1:-/home/yly/ld19_hand_on/src/scout_bringup/maps}"
-map_name="${2:-ld19_handheld_map}"
+map_dir="${1:-/home/yly/ld19_field_data}"
+map_name="${2:-my_map}"
 mkdir -p "$map_dir"
 ros2 run nav2_map_server map_saver_cli -t /map -f "$map_dir/$map_name"

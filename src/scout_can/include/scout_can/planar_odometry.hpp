@@ -16,7 +16,8 @@ struct PlanarOdometry
 
   enum class Update { First, Integrated, Discontinuity, Duplicate };
 
-  Update update(int64_t stamp_ns, const std::array<double, 3> & velocity,
+  Update update(
+    int64_t stamp_ns, const std::array<double, 3> & velocity,
     const std::array<double, 3> & variance, double timeout)
   {
     if (initialized && stamp_ns == last_stamp_ns) {

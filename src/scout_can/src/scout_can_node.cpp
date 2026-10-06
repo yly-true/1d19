@@ -91,12 +91,14 @@ ScoutCanNode::ScoutCanNode()
       !std::isfinite(stddev) || stddev <= 0.0 ||
       !std::isfinite(stddev * stddev))
     {
-      throw std::invalid_argument("odometry scales and standard deviations must be finite and positive");
+      throw std::invalid_argument(
+        "odometry scales and standard deviations must be finite and positive");
     }
     velocity_variance_[i] = stddev * stddev;
   }
   if (publish_odom_ && get_parameter("use_sim_time").as_bool()) {
-    throw std::invalid_argument("live CAN odometry requires use_sim_time=false; replay recorded /odom instead");
+    throw std::invalid_argument(
+      "live CAN odometry requires use_sim_time=false; replay recorded /odom instead");
   }
 
   socket_fd_ = openCanSocket();
@@ -276,7 +278,8 @@ void ScoutCanNode::receiveFrames()
       }
     }
     if (stamp_ns <= 0) {
-      RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000, "CAN frame has no receive timestamp; dropped");
+      RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 2000,
+        "CAN frame has no receive timestamp; dropped");
       continue;
     }
     handleFrame(frame, stamp_ns);
@@ -353,7 +356,7 @@ void ScoutCanNode::publishOdometry(double vx, double vy, double wz, int64_t stam
   const std::array<double, 3> velocity{
     vx * odom_scale_[0], vy * odom_scale_[1], wz * odom_scale_[2]};
   if (stamp_ns <= 0 || !std::all_of(velocity.begin(), velocity.end(),
-      [](double value) {return std::isfinite(value);}))
+    [](double value) {return std::isfinite(value);}))
   {
     return;
   }

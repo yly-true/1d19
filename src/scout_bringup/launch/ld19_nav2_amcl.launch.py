@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import os
 
-import yaml
-
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
@@ -10,6 +8,7 @@ from launch.conditions import IfCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+import yaml
 
 
 def generate_launch_description():
@@ -81,7 +80,7 @@ def generate_launch_description():
             output='screen',
             condition=IfCondition(rviz),
             arguments=[
-                '-d', os.path.join(nav2_share, 'rviz', 'nav2_default_view.rviz')
+                '-d', os.path.join(package_share, 'rviz', 'nav2_navigation_light.rviz')
             ],
         ),
     ])
